@@ -1,0 +1,105 @@
+Tables:
+
+	Teams
+	Fixtures
+	Players
+	Venues
+	Officals
+	Tv_coverage
+        Match_stats
+        Results
+	Injury_list
+	Suspension_list
+        History
+
+	Teams:
+		team_id          type  count,   unique key
+		venue_id         type  int,     key
+		team_name        type  char
+		team_union       type  char
+		team_manager	 type  char
+		team_assistant   type  char
+                team_coach       type  char
+
+	Fixtures:
+		fixture_id	 type  count,   unique key
+		home_id		 type  int,     key
+		away_id		 type  int,     key
+		fixture_date	 type  datetime
+		fixture_time	 type  datetime
+
+	Players:
+		player_id	 type  count,   unique key
+		team_id		 type  int,     key
+		player_name	 type  char
+		player_caps	 type  int
+		player_injury    type  flag
+
+	Venues:
+		venue_id	 type  count,   unique key
+		team_id		 type  int	key
+		venue_name	 type  char
+		venue_address	 type  char
+		venue_country	 type  char
+
+	Officals:
+		offical_id	 type  count,	unique key
+		team_id		 type  int,	key
+		offical_name	 type  char
+		offical_position type  char
+		fixture_id	 type  int	key
+
+	Coverage:
+		cover_id	 type  count,	unique key
+		fixture_id	 type  int,     key
+		cover_tv	 type  char
+		cover_time	 type  datetime
+
+	Results:
+		result_id	 type  count,	unique key
+                fixture_id	 type  int,	key
+		team_home	 type  int,     key
+		team_away	 type  int,     key
+		result_home	 type  int
+		result_away	 type  int
+		result_win_id	 type  int
+
+
+
+        Match_stats:
+		stats_id	 type  count,	unique key
+                fixture_id	 type  int,	key
+		stats_try_h	 type  int
+		stats_try_a	 type  int
+		stats_con_h	 type  int
+		stats_con_a	 type  int
+		stats_pen_h	 type  int
+		stats_pen_a	 type  int
+		stats_yel_h	 type  int
+		stats_red_h	 type  int
+		stats_yel_a	 type  int
+		stats_red_a	 type  int
+
+	Injury_list:
+		injury_id	 type  count,	unique key
+		player_id	 type  int,	key
+		injury_desc	 type  char
+		injury_outtime   type  char
+		injury_return	 type  flag(Y/N)
+
+	Suspension_list
+		suspend_id	 type  count,	unique key
+		player_id	 type  int,	key
+		suspend_desc	 type  char
+		suspend_outtime  type  char
+		suspend_return	 type  flag(Y/N)
+
+	History:
+		hist_id	 	 type  count,	unique key
+		hist_team_a_id   type  int,	key
+		hist_team_b_id   type  int,	key
+		hist_win_last	 type  flag(W/L/D)
+		hist_last_res    type  char
+		hist_won	 type  int
+		hist_lost	 type  char
+		
